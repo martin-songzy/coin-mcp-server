@@ -35,7 +35,6 @@ async function getBitgetPrice(token: string) {
 
     // 获取 data[0].lastPr
     const lastPrice = data.data[0].lastPr;
-    console.log('BGB/USDT 最新价格:', lastPrice);
     return lastPrice;
 
   } catch (error) {
