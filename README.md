@@ -46,6 +46,12 @@ Fire it up with:
 ```bash
 deno run --allow-net --allow-env --allow-read main.ts
 ```
+
+or
+```bash
+deno run --allow-net --allow-env --allow-read https://deno.land/x/coin_mcp_server@v1.0.1/main.ts
+```
+
 - `--allow-net`: Lets us talk to Bitget’s API.
 - `--allow-env`: Grabs your `BGURL` env variable if you’ve set one.
 

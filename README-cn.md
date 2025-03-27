@@ -47,6 +47,11 @@ deno run --allow-net --allow-env --allow-read main.ts
 - `--allow-net`: 让我们跟 Bitget 的 API 聊聊天。
 - `--allow-env`: 读取你设定的 `BGURL` 环境变量。
 
+或者
+```bash
+deno run --allow-net --allow-env --allow-read https://deno.land/x/coin_mcp_server@v1.0.1/main.ts
+```
+
 服务器会以 `stdio` 模式启动，像个加密自动贩卖机一样随时待命！🍔
 
 ---
