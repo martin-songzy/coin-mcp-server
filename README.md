@@ -121,7 +121,3 @@ MIT – Do whatever you want with it, just don’t blame me if your token moons 
 ---
 
 Happy crypto hunting, and may your bags always be green! 💚
-
----
-
-How’s that? I’ve kept it playful, added some emojis for flair, and made sure it’s still useful. Let me know if you’d like any tweaks!
