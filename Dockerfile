@@ -1,13 +1,11 @@
-# 使用官方 Deno 镜像作为基础镜像
-FROM denoland/deno:1.42.0
+FROM denoland/deno:latest
 
-# 设置工作目录
+
 WORKDIR /app
 
-# 复制项目文件到容器中
+
 COPY . .
 
-# 缓存依赖（提高构建速度）
 RUN deno cache main.ts
 
 
