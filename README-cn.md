@@ -56,6 +56,26 @@ deno run --allow-net --allow-env --allow-read https://deno.land/x/coin_mcp_serve
 
 ---
 
+### 配置
+
+config.json
+```json
+{
+  "mcpServers": {
+    "coin-mcp": {
+      "command": "deno",
+      "args": [
+        "run",
+        "--allow-net",
+        "--allow-read",
+        "--allow-env",
+        "https://deno.land/x/coin_mcp_server@v1.0.1/main.ts"
+      ]
+    }
+  }
+}
+```
+
 ## 使用示例 🎮
 
 调用 `getTokenPrice` 的方法如下：

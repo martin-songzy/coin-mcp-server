@@ -59,6 +59,26 @@ The server will start in `stdio` mode, ready to serve up prices like a crypto ve
 
 ---
 
+### Configuration
+
+config.json
+```json
+{
+  "mcpServers": {
+    "coin-mcp": {
+      "command": "deno",
+      "args": [
+        "run",
+        "--allow-net",
+        "--allow-read",
+        "--allow-env",
+        "https://deno.land/x/coin_mcp_server@v1.0.1/main.ts"
+      ]
+    }
+  }
+}
+```
+
 ## Usage Example 🎮
 
 Here’s how you’d call `getTokenPrice`:
