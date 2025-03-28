@@ -13,7 +13,7 @@ server.addTool({
     token: z.string()
   }),
   execute: async (args) => {
-    return getBitgetPrice(args.token);
+    return String(getBitgetPrice(args.token));
   },
 });
 
@@ -23,8 +23,8 @@ server.addTool({
   parameters: z.object({
     anType: z.enum(["latest_news", "coin_listings", "trading_competitions_promotions","maintenance_system_updates","symbol_delisting"])
   }),
-  execute: async (args) => {
-    return getAnnoucements(args.anType);
+  execute: async (args,{log}) => {
+    return JSON.stringify(getAnnoucements(args.anType,log));
   },
 });
 
@@ -54,14 +54,14 @@ async function getBitgetPrice(token: string) {
   }
 }
 
-async function getAnnoucements(anType: string) {
+async function getAnnoucements(anType: string,log: any) {
   try {
     const baseUrl = Deno.env.get("BGURL") || "https://api.bitget.com";
-    const url = `${baseUrl}/api/v2/public/annoucements?annType=${anType}`;
-
+    const url = `${baseUrl}/api/v2/public/annoucements?language=zh_CN&annType=${anType}`;
+    log.info("info"+String(url));
     // 发送 GET 请求
     const response = await fetch(url);
-
+    console.log(url)
     // 检查响应状态
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -69,6 +69,7 @@ async function getAnnoucements(anType: string) {
 
     // 解析 JSON
     const data = await response.json();
+    log.info("getData",data);
     return data;
 
   } catch (error) {
