@@ -13,18 +13,23 @@ server.addTool({
     token: z.string()
   }),
   execute: async (args) => {
-    return String(getBitgetPrice(args.token));
+    return getBitgetPrice(args.token);
   },
 });
 
 server.addTool({
   name: "getAnnoucements",
-  description: "Search for cryptocurrency announcements within one month .parameter anType is announcement type",
+  description: "Search for cryptocurrency announcements within one month .parameter anType is announcement type\nAnnouncement type\n" +
+      "latest_news: Latest events\n" +
+      "coin_listings: New coin listings\n" +
+      "trading_competitions_promotions: Trading competitions and promotions\n" +
+      "maintenance_system_updates: maintenance/system upgrades\n" +
+      "symbol_delisting: Delisting information",
   parameters: z.object({
     anType: z.enum(["latest_news", "coin_listings", "trading_competitions_promotions","maintenance_system_updates","symbol_delisting"])
   }),
   execute: async (args,{log}) => {
-    return JSON.stringify(getAnnoucements(args.anType,log));
+    return getAnnoucements(args.anType,log);
   },
 });
 
@@ -46,7 +51,7 @@ async function getBitgetPrice(token: string) {
 
     // 获取 data[0].lastPr
     const lastPrice = data.data[0].lastPr;
-    return lastPrice;
+    return String(lastPrice);
 
   } catch (error) {
     console.error('请求失败:', error);
@@ -70,7 +75,7 @@ async function getAnnoucements(anType: string,log: any) {
     // 解析 JSON
     const data = await response.json();
     log.info("getData",data);
-    return data;
+    return JSON.stringify(data);
 
   } catch (error) {
     console.error('请求失败:', error);
