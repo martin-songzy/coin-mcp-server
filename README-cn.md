@@ -56,7 +56,7 @@ deno run --allow-net --allow-env --allow-read main.ts
 
 或者
 ```bash
-deno run --allow-net --allow-env --allow-read https://deno.land/x/coin_mcp_server@v1.0.1/main.ts
+deno run --allow-net --allow-env --allow-read https://deno.land/x/coin_mcp_server/main.ts
 ```
 
 服务器会以 `stdio` 模式启动，像个加密自动贩卖机一样随时待命！🍔
@@ -76,7 +76,7 @@ config.json
         "--allow-net",
         "--allow-read",
         "--allow-env",
-        "https://deno.land/x/coin_mcp_server@v1.0.1/main.ts"
+        "https://deno.land/x/coin_mcp_server/main.ts"
       ]
     }
   }

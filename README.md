@@ -56,7 +56,7 @@ deno run --allow-net --allow-env --allow-read main.ts
 
 or
 ```bash
-deno run --allow-net --allow-env --allow-read https://deno.land/x/coin_mcp_server@v1.0.1/main.ts
+deno run --allow-net --allow-env --allow-read https://deno.land/x/coin_mcp_server/main.ts
 ```
 
 - `--allow-net`: Lets us talk to Bitget’s API.
@@ -79,7 +79,7 @@ config.json
         "--allow-net",
         "--allow-read",
         "--allow-env",
-        "https://deno.land/x/coin_mcp_server@v1.0.1/main.ts"
+        "https://deno.land/x/coin_mcp_server/main.ts"
       ]
     }
   }
