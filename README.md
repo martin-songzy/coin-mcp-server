@@ -14,6 +14,9 @@ This project spins up a server that lets you query the current price of any cryp
 - **Mission**: Fetch the latest price of a token (e.g., `BGB`, `BTC`, `ETH`).
 - **Superpower**: It’s fast, it’s simple, and it’s powered by `FastMCP`! ⚡
 
+- **Tool**: `getAnnoucements`
+- **Mission**: get annoucements
+
 ---
 
 ## Features 🌟

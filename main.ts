@@ -3,7 +3,7 @@ import { z } from "npm:zod";
 
 const server = new FastMCP({
   name: "coin mcp server",
-  version: "1.0.0",
+  version: "1.0.2",
 });
 
 server.addTool({
@@ -24,9 +24,10 @@ server.addTool({
       "coin_listings: New coin listings\n" +
       "trading_competitions_promotions: Trading competitions and promotions\n" +
       "maintenance_system_updates: maintenance/system upgrades\n" +
-      "symbol_delisting: Delisting information",
+      "symbol_delisting: Delisting information\n" +
+      "empty string for all announcements",
   parameters: z.object({
-    anType: z.enum(["latest_news", "coin_listings", "trading_competitions_promotions","maintenance_system_updates","symbol_delisting"])
+    anType: z.enum(["latest_news", "coin_listings", "trading_competitions_promotions","maintenance_system_updates","symbol_delisting",""])
   }),
   execute: async (args,{log}) => {
     return getAnnoucements(args.anType,log);
