@@ -3,7 +3,7 @@ import { z } from "npm:zod";
 
 const server = new FastMCP({
   name: "coin mcp server",
-  version: "1.0.3",
+  version: "1.0.4",
 });
 
 server.addTool({
@@ -55,7 +55,7 @@ server.addTool({
     coin: z.string()
   }),
   execute: async (args) => {
-    return getBitgetPrice(args.coin);
+    return getCoinInfo(args.coin);
   },
 });
 
