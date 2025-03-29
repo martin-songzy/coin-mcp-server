@@ -17,6 +17,10 @@ This project spins up a server that lets you query the current price of any cryp
 - **Tool**: `getAnnoucements`
 - **Mission**: get annoucements
 
+- **Tool**: `getCoinInfo`
+- **Mission**: Get detailed information about a specified token.
+- **Superpower**: Provides detailed information such as token transferability, supported chain list, chain network status, etc.
+
 ---
 
 ## Features 🌟

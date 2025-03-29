@@ -3,7 +3,7 @@ import { z } from "npm:zod";
 
 const server = new FastMCP({
   name: "coin mcp server",
-  version: "1.0.2",
+  version: "1.0.3",
 });
 
 server.addTool({
@@ -31,6 +31,31 @@ server.addTool({
   }),
   execute: async (args,{log}) => {
     return getAnnoucements(args.anType,log);
+  },
+});
+
+server.addTool({
+  name: "getCoinInfo",
+  description: "Get spot coin information。Parameter：coin - Coin name\nResponse Parameters \n" +
+      "- coin: Token name  \n" +
+      "- transfer: Transferability  \n" +
+      "- chains: Support chain list  \n" +
+      "  - chain: Chain name  \n" +
+      "  - needTag: Need tag  \n" +
+      "  - withdrawable: Withdrawal supported  \n" +
+      "  - rechargeable: Deposit supported  \n" +
+      "  - withdrawFee: Withdrawal transaction fee  \n" +
+      "  - extraWithdrawFee: Extra charge (e.g., 0.1 means 10% on-chain destruction)  \n" +
+      "  - browserUrl: Blockchain explorer address  \n" +
+      "  - contractAddress: Coin contract address  \n" +
+      "  - withdrawStep: Withdrawal count step (if not 0, withdrawal size must be a multiple of this value; if 0, no such limit)  \n" +
+      "  - withdrawMinScale: Decimal places of withdrawal amount  \n" +
+      "  - congestion: Chain network status (normal: normal, congested: congestion)",
+  parameters: z.object({
+    coin: z.string()
+  }),
+  execute: async (args) => {
+    return getBitgetPrice(args.coin);
   },
 });
 
@@ -76,6 +101,30 @@ async function getAnnoucements(anType: string,log: any) {
     // 解析 JSON
     const data = await response.json();
     log.info("getData",data);
+    return JSON.stringify(data);
+
+  } catch (error) {
+    console.error('请求失败:', error);
+    throw error;
+  }
+}
+
+async function getCoinInfo(token: string) {
+  try {
+    const baseUrl = Deno.env.get("BGURL") || "https://api.bitget.com";
+    const url = `${baseUrl}/api/v2/spot/public/coins?coin=${token}`;
+    console.log(url);
+    // 发送 GET 请求
+    const response = await fetch(url);
+
+    // 检查响应状态
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    // 解析 JSON
+    const data = await response.json();
+
     return JSON.stringify(data);
 
   } catch (error) {
