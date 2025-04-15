@@ -132,7 +132,36 @@ async function getCoinInfo(token: string) {
     throw error;
   }
 }
-
-server.start({
+let args = Deno.args;
+// 默认启用stdio模式
+if(args.length == 0) {
+  server.start({
   transportType: "stdio",
 });
+let startType = args[0];
+if(startType == "stdio") {
+  server.start({
+  transportType: "stdio",
+});
+} else if(startType == "sse") {
+  server.start({
+  transportType: "sse",
+  sse: {
+    endpoint: "/sse",
+    port: 8080,
+  },
+});
+} else if(startType == "all") 
+{
+  server.start({
+  transportType: "sse",
+  sse: {
+    endpoint: "/sse",
+    port: 8080,
+  },
+});
+  server.start({
+  transportType: "stdio",
+});
+}
+}
