@@ -1,5 +1,6 @@
 import { FastMCP } from "npm:fastmcp";
 import { z } from "npm:zod";
+import {number} from "npm:zod@3.24.2";
 
 const server = new FastMCP({
   name: "coin mcp server",
@@ -133,6 +134,8 @@ async function getCoinInfo(token: string) {
   }
 }
 const startType = Deno.env.get("StartType") || "stdio";
+const PORT = Deno.env.get("PORT") || "3001";
+console.log("PORT:",PORT)
 if(startType == "stdio") {
   server.start({
   transportType: "stdio",
@@ -142,7 +145,7 @@ if(startType == "stdio") {
   transportType: "sse",
   sse: {
     endpoint: "/sse",
-    port: 8080,
+    port: parseInt(PORT),
   },
 });
 } else if(startType == "all") 
@@ -151,7 +154,7 @@ if(startType == "stdio") {
   transportType: "sse",
   sse: {
     endpoint: "/sse",
-    port: 8080,
+    port: parseInt(PORT),
   },
 });
   server.start({
