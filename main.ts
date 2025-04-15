@@ -4,7 +4,7 @@ import {number} from "npm:zod@3.24.2";
 
 const server = new FastMCP({
   name: "coin mcp server",
-  version: "1.0.4",
+  version: "1.0.5",
 });
 
 server.addTool({
