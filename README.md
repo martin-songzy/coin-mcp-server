@@ -64,6 +64,8 @@ deno run --allow-net --allow-env --allow-read https://deno.land/x/coin_mcp_serve
 
 The server will start in `stdio` mode, ready to serve up prices like a crypto vending machine! 🍔
 
+3. Support installation-free, directly deploy to deno, fork this project, log in dash.deno.com, set the environment variable StartType=sse to use the domain name provided by deno to connect in sse mode
+
 ---
 
 ### Configuration

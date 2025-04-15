@@ -61,6 +61,8 @@ deno run --allow-net --allow-env --allow-read https://deno.land/x/coin_mcp_serve
 
 服务器会以 `stdio` 模式启动，像个加密自动贩卖机一样随时待命！🍔
 
+3. 支持免安装，直接部署到deno,fork本项目，登录dash.deno.com，设置环境变量StartType=sse 即可使用deno提供的域名使用sse模式连接
+
 ---
 
 ### 配置
