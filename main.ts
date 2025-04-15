@@ -132,13 +132,7 @@ async function getCoinInfo(token: string) {
     throw error;
   }
 }
-let args = Deno.args;
-// 默认启用stdio模式
-if(args.length == 0) {
-  server.start({
-  transportType: "stdio",
-});
-let startType = args[0];
+const startType = Deno.env.get("StartType") || "stdio";
 if(startType == "stdio") {
   server.start({
   transportType: "stdio",
